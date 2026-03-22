@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CheckCircle } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Success() {
+  const location = useLocation()
+  const query = new URLSearchParams(location.search);
+  const productId = query.get('id');
+
+  const navigate = useNavigate()
+
+  console.log(productId)
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/")
+    }, 3000)
+  }, [])
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
@@ -13,9 +28,6 @@ function Success() {
         <p className="text-gray-600 mb-6">
           Thank you for your purchase. Your payment has been processed successfully.
         </p>
-        <button className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition duration-300">
-          Back to Sign In
-        </button>
       </div>
     </div>
   );
