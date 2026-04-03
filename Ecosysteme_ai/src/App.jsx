@@ -1,21 +1,102 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Login from './pages/login'
-import SettingsPage from './pages/Settings'
-import Sidebar from './components/Sidebar'
 import Dashboard from './layout/Dashboard'
-import { Pricing } from './pages/Pricing'
+import SetPassword from './pages/createPassword'
+import Success from './pages/success'
+import PaymentFailed from './pages/failure'
+import ResetPassword from './pages/ResetPassword'
+import PricingPage from './pages/Pricing'
+import SettingsPage from './pages/Dashboard/Settings'
+import Home from './pages/Dashboard/Home'
+import AcceptInvitation from './pages/acceptInvite'
+import Agents from './pages/Dashboard/Agents'
+import Documentation from './pages/Dashboard/Documentation'
+import Support from './pages/Dashboard/Support'
+import Community from './pages/Dashboard/Community'
+import BrainAI from './pages/Dashboard/Brain'
+import AppointmentSetter from './pages/Dashboard/AppointmentSetter'
+import 'react-datepicker/dist/react-datepicker.css';
+import Notification from './pages/Dashboard/Notification'
+import Phone from './pages/Dashboard/Phone'
+import Campaigns from './pages/Dashboard/Campaigns'
+import PrivacyPolicy from './components/PrivacyPolicy'
+import TermsAndConditions from './components/TermsAndConditions'
+import AgentPersonalityDocumentation from './components/AgentPersonalityDocumentation'
+import "/node_modules/flag-icons/css/flag-icons.min.css";
+import Accounting from './pages/Dashboard/Accounting'
+import Hr from './pages/Dashboard/Hr'
+import Coo from './pages/Dashboard/Coo'
+import Seo from './pages/Dashboard/Seo'
+import ContentCreation from './pages/Dashboard/ContentCreation'
+import CustomerSupport from './pages/Dashboard/CustomerSupport'
+import Skills from './pages/Dashboard/Skills'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import SuperDashboard from './pages/SuperAdminDashboard/Layout/SuperDashboard';
+import SuperAdminDashboard from './pages/SuperAdminDashboard/SuperAdminDashboard';
+import UserManagement from './pages/SuperAdminDashboard/UserManagement'
+import { Toaster } from 'react-hot-toast'
+import BillingSubscription from './pages/SuperAdminDashboard/BillingSubscription'
+import LogsTroubleshooting from './pages/SuperAdminDashboard/LogsTroubleshooting'
+import SuperAdminSetting from './pages/SuperAdminDashboard/SuperAdmingSetting'
+import BrainManagement from './pages/SuperAdminDashboard/BrainManagement'
+import BrainManagementSub from './pages/SuperAdminDashboard/BrainManagementSub'
+import AgentMonitoring from './pages/SuperAdminDashboard/AgentMonitoring'
+import AgentMonitoringSub from './pages/SuperAdminDashboard/AgentMonitoringSub'
 
 
-function App() {
+
+
+
+
+  function App() {
 
   return (
-    <div className='h-screen'>
-    <Routes>
-      <Route path='/' element={<Login />} />
-      <Route path='/dashboard' element={<Dashboard><SettingsPage /></Dashboard>} />
-      <Route path='/pricing' element={<Pricing />} />
-    </Routes>
+    <div className='h-screen inter'>
+      <Toaster />
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/super-admin' element={<SuperDashboard/>}>
+          <Route path='' element={<SuperAdminDashboard />} />
+          <Route path="user-management" element={<UserManagement/>}/> 
+          <Route path="agent-monitoring" element={<AgentMonitoring/>}/>
+          <Route path="brain-management" element={<BrainManagement/>}/>
+          <Route path="brain-management-sub" element={<BrainManagementSub/>}/>
+          <Route path="agent-monitoring-sub" element={<AgentMonitoringSub/>}/>
+          <Route path="billing-subscription" element={<BillingSubscription/>}/>
+          <Route path="logs-troubleshooting" element={<LogsTroubleshooting/>}/>
+          <Route path="settings" element={<SuperAdminSetting/>}/>
+        </Route>
+        <Route path='/create-password' element={<SetPassword />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
+        <Route path='/pricing' element={<PricingPage />} />
+        <Route path='/success' element={<Success />} />
+        <Route path='/cancel' element={<PaymentFailed />} />
+        <Route path='/accept-invite' element={<AcceptInvitation />} />
+        <Route path='/terms' element={< TermsAndConditions />} />
+        <Route path='/privacy' element={< PrivacyPolicy />} />
+        <Route path='/agent-personality-documentation' element={< AgentPersonalityDocumentation />} />
+        <Route path='/dashboard' element={<Dashboard />}>
+          <Route path='' element={<Agents />} />
+          <Route path="notification" element={<Notification />} />
+          <Route path="brain" element={<BrainAI />} />
+          <Route path="phone" element={<Phone />} />
+          <Route path="settings" element={<SettingsPage />} />
+          <Route path="documentation" element={<Documentation />} />
+          <Route path="campaigns" element={<Campaigns />} />
+          <Route path="support" element={<Support />} />
+          <Route path="community" element={<Community />} />
+          <Route path="appointment-setter" element={<AppointmentSetter />} />
+          <Route path="accounting" element={<Accounting />} />
+          <Route path="hr" element={<Hr />} />
+          <Route path="coo" element={<Coo />} />
+          <Route path="seo" element={<Seo />} />
+          <Route path="content-creation" element={<ContentCreation />} />
+          <Route path="customer-support" element={<CustomerSupport />} />
+          <Route path="skills" element={<Skills />} />
+        </Route>
+      </Routes>
     </div>
   )
 }
